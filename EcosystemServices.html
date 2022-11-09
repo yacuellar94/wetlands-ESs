@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Assessing the Impacts of Urban Wetlands Land Cover Changes on Water Provision Ecosystem Services</title>
+ <meta charset="UTF-8">
+ <!-- Téléchargement de la bibliothèque Leaflet.js -->
+		<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+		<!-- Téléchargement des instructions CSS de Leaflet, qui serviront à styliser les éléments de l'interface de la carte -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+ <style>
+		html, body {height: 100%; margin: 0,background-color: rgb(255,255,255) }
+			#Carte { width: 100%; height: 100%; }
+			#Carte2 { width: 100%; height: 100%; }
+		.gfg {
+           margin: 3%;
+           position: relative;
+        }
+		.text-below-marker {
+		  min-width: 100px;
+		  left: -30px;
+		  text-align: right;
+		  min-height: 1.5em;
+		  font-size: 13pt;
+		  font-weight:bold;
+		  
+		  
+		}
+  
+        .first-txt {
+            position: absolute;
+            top: 17px;
+            left: 50px;
+        }
+  
+        .second-txt {
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+			body {
+				background-color: rgb(179,187,191);
+			}
+		.center {
+		  display: block;
+		  margin-left: auto;
+		  margin-right: auto;
+		  width: 100%;
+		}
+		
+			
+			p {
+				font-family: Ravie;
+				font-size: 13pt;
+				color: red;
+			}
+			
+			h1 {
+				font-family: Garamond;
+				font-size: 33pt;
+				color: rgb(211,45,34);
+				text-align:center;
+			}
+			
+			h2 {
+				font-family: Segoe;
+				font-size: 23pt;
+				color: rgb(130,69,139);
+				text-align:right;
+			}
+			
+			h3 {
+				font-family: monospace;
+				font-size: 25pt;
+				color: rgb(13,69,139);
+				text-align:center;
+			}
+			#intro{color:cyan;font-family:Ravie;}
+			#conclu{color:pink;font-size:35 pt}
+	</style>
+ </head>
+ <body>
+ <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" > -->
+ <!-- <h1>Un gros titre</h1>
+ <h2>Un moins gros titre</h2>
+ <h3>Un nom de paragraphe</h3>
+ <h4>Un gros titre</h1>
+ <h5>Un moins gros titre</h2>
+ <h6>Un nom de paragraphe</h3> -->
+ <body>
+    <div class="gfg">
+        <img src="pic1.png">
+    </div>
+	
+	<div class="gfg">
+        <img src="pic2_2.png">
+    </div>
+	
+	<!-- <div class="gfg">
+        <img src="pic3.png">
+    </div> -->
+	<iframe src="https://uploads.knightlab.com/storymapjs/d8eb3fd7890d640092a91c864466f92b/assessing-the-impacts-of-urban-wetlands-land-cover-changes-on-water-provision-ecosystem-services/index.html" frameborder="0" width="100%" height="1000"></iframe>
+	
+	<div class="gfg">
+        <img src="pic4.png">
+    </div>
+	
+	
+	<div class="gfg">
+        <img src="pic5.png">
+    </div>
+	
+	<div class="gfg">
+        <img src="pic8.png">
+    </div>
+	
+	<div class="gfg">
+        <img src="pic22.png">
+    </div>
+	
+	<div class="gfg">
+        <img src="pic17.png">
+    </div>
+	
+	<div class="gfg">
+        <img src="pic18.png">
+    </div>
+	
+	<div class="gfg">
+        <img src="pic6.png">
+    </div>
+	
+	<div class="gfg">
+        <img src="pic7.png">
+    </div>
+	
+	<div class="gfg">
+        <img src="pic9.png">
+    </div>
+	
+	<div class="gfg">
+        <img src="pic10.png">
+    </div>
+	
+	<div id='Carte'></div>
+		<!--		Début du script JavaScript-->
+		<script>
+//			Création d'une variable "maCarte" qui contiendra... ma carte.
+			maCarte = L.map('Carte')
+//			On donne une position lat lng et un niveau de zoom par défaut
+			maCarte.setView([4.660438, -73.889718], 12)
+//			On définit notre fond de carte qui téléchargera les tuiles avec l'API OSM
+ 			<!-- fondDeCarte = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png')
+//			J'attache ce fond de plan à ma carte
+			<!-- fondDeCarte.addTo(maCarte) --> -->
+			mapboxUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoieWVubnljdWVsbGFyIiwiYSI6ImNrbGd0ZnBpMjI4Nngyb3RrdXJkZmpmM3oifQ.eqHaowCnKwB8KgRe_auZfQ'
+			// Création d'une variable dans laquelle nous mettons les informations d'attribution
+			mapboxAttribution = 'Fond de carte &copy; <a href="CC-BY-SA</a>, ' + 'via © <a href="https://www.mapbox.com/">Mapbox</a> '
+			// Création des quatre fond de carte en réutilisant les variables précédemment céées
+			fondDeCarte = L.tileLayer(mapboxUrl, {id: 'mapbox/light-v10', attribution: mapboxAttribution}).addTo(maCarte)
+		
+		//création icon
+		var myIcon = L.icon({
+			iconUrl: 'icon humedal.png',
+			iconSize: [25, 25]
+			
+		});
+			//			Création d'un marker et d'un pop-up
+			conej=L.marker([4.760683, -74.101320], {icon : myIcon}).addTo(maCarte)
+			conej.bindPopup("<p><b>La Conejera</p>")
+			juAm=L.marker([4.727764, -74.107115], {icon : myIcon}).addTo(maCarte)
+			juAm.bindPopup("<p><b>Juan Amarillo</p>")
+			jab=L.marker([4.715340, -74.132632], {icon : myIcon}).addTo(maCarte)
+			jab.bindPopup("<h3>Jaboque</h3> <img src='jaboque_mini.jpg'/>",{maxWidth: "auto"})<!-- .openPopup() -->
+			torca=L.marker([4.802755, -74.040525],{icon : myIcon}).addTo(maCarte)
+			torca.bindPopup("<p><b>Torca</p>")
+			guaym=L.marker([4.788802, -74.039586],{icon : myIcon}).addTo(maCarte)
+			guaym.bindPopup("<p><b>Guaymaral</p>")
+			cord=L.marker([4.702314, -74.073065], {icon : myIcon}).addTo(maCarte)
+			cord.bindPopup("<p><b>Cordoba</p>")
+			capellania=L.marker([4.675023, -74.130660],{icon : myIcon}).addTo(maCarte)
+			capellania.bindPopup("<p><b>Capellania</p>")
+			salitre=L.marker([4.667430, -74.088080],{icon : myIcon}).addTo(maCarte)
+			salitre.bindPopup("<p><b>El Salitre</p>")
+			techo=L.marker([4.645218, -74.141663],{icon : myIcon}).addTo(maCarte)
+			techo.bindPopup("<p><b>Techo</p>")
+			burro=L.marker([4.641737, -74.149624],{icon : myIcon}).addTo(maCarte)
+			burro.bindPopup("<p><b>El Burro</p>")
+			vaca=L.marker([4.627804, -74.161233],{icon : myIcon}).addTo(maCarte)
+			vaca.bindPopup("<h3>La Vaca</h3> <img src='vaca despues_mini.jpeg'/>",{maxWidth: "auto"})<!-- .openPopup() -->
+			tibanica=L.marker([4.601810, -74.204306],{icon : myIcon}).addTo(maCarte)
+			tibanica.bindPopup("<p><b>Tibanica</p>")
+			tunjo=L.marker([4.575961, -74.142224], {icon : myIcon}).addTo(maCarte)	
+			tunjo.bindPopup("<p><b>El Tunjo</p>")
+			meandro=L.marker([4.677853, -74.159983],{icon : myIcon}).addTo(maCarte)	
+			meandro.bindPopup("<p><b>Meandro del Say</p>")
+			santa=L.marker([4.694490, -74.094203],{icon : myIcon}).addTo(maCarte)	
+			santa.bindPopup("<p><b>Santa Maria del Lago</p>")
+			
+			//			adding image
+			// center of the map
+			var center = [4.835252, -74.014416];
+			var imageUrl = 'pic11.png',
+			imageBounds = [center, [4.492860, -73.536726]];
+
+L.imageOverlay(imageUrl, imageBounds).addTo(maCarte);
+			
+	
+		</script>
+		
+		<div id='Carte2'></div>
+		<!--		Début du script JavaScript-->
+		<script>
+		var myIcon2 = L.icon({
+			iconUrl: 'icon_humedal2.png',
+			iconSize: [35, 35]
+			
+		});
+//			Création d'une variable "maCarte" qui contiendra... ma carte.
+			maCarte2 = L.map('Carte2')
+//			On donne une position lat lng et un niveau de zoom par défaut
+			maCarte2.setView([4.664605, -74.356597], 12)
+//			On définit notre fond de carte qui téléchargera les tuiles avec l'API OSM
+ 			<!-- fondDeCarte.addTo(maCarte) --> -->
+			mapboxUrl2 = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoieWVubnljdWVsbGFyIiwiYSI6ImNrbGd0ZnBpMjI4Nngyb3RrdXJkZmpmM3oifQ.eqHaowCnKwB8KgRe_auZfQ'
+			// Création d'une variable dans laquelle nous mettons les informations d'attribution
+			mapboxAttribution2 = 'Fond de carte &copy; <a href="CC-BY-SA</a>, ' + 'via © <a href="https://www.mapbox.com/">Mapbox</a> '
+			// Création des quatre fond de carte en réutilisant les variables précédemment céées
+			fondDeCarte = L.tileLayer(mapboxUrl2, {id: 'mapbox/outdoors-v11', attribution: mapboxAttribution2}).addTo(maCarte2)
+			//			Création d'un marker et d'un pop-up
+			jab=L.marker([4.715340, -74.132632], {icon : myIcon2}).bindPopup("<h3>Jaboque</h3>",{maxWidth: "auto"}).addTo(maCarte2).openPopup()
+			<!-- jab=L.marker([4.715340, -74.132632], {icon:new L.divIcon({html:'El Jaboque',className: 'text-below-marker'}),}).addTo(maCarte2) -->
+			torca=L.marker([4.802755, -74.040525], {icon : myIcon2}).bindPopup("<h3>Torca</h3>",{maxWidth: "auto"}).addTo(maCarte2).openPopup()
+			<!-- torca=L.marker([4.802755, -74.040525], {icon:new L.divIcon({html:'Torca',className: 'text-below-marker'}),}).addTo(maCarte2) -->
+			guaym=L.marker([4.788802, -74.039586], {icon : myIcon2}).bindPopup("<h3>Guaymaral</h3>",{maxWidth: "auto"}).addTo(maCarte2).openPopup()
+			<!-- guaym=L.marker([4.788802, -74.039586], {icon:new L.divIcon({html:'Guaymaral',className: 'text-below-marker'}),}).addTo(maCarte2) -->
+			tibanica=L.marker([4.601810, -74.204306], {icon : myIcon2}).bindPopup("<h3>Tibanica</h3>",{maxWidth: "auto"}).addTo(maCarte2).openPopup()
+			<!-- tibanica|=L.marker([4.601810, -74.204306], {icon:new L.divIcon({html:'Tibanica',className: 'text-below-marker'}),}).addTo(maCarte2) -->
+			tunjo=L.marker([4.575961, -74.142224], {icon : myIcon2}).bindPopup("<h3>El Tunjo</h3>",{maxWidth: "auto"}).addTo(maCarte2).openPopup()	
+			<!-- tunjo=L.marker([4.575961, -74.142224], {icon:new L.divIcon({html:'El Tunjo',className: 'text-below-marker'}),}).addTo(maCarte2) -->
+			meandro=L.marker([4.677853, -74.159983], {icon : myIcon2}).bindPopup("<h3>Meandro del Say</h3>",{maxWidth: "auto"}).addTo(maCarte2).openPopup()	
+			<!-- meandro=L.marker([4.677853, -74.159983], {icon:new L.divIcon({html:'Meandro del Say',className: 'text-below-marker'}),}).addTo(maCarte2) -->
+			//			adding image
+			// center of the map
+			var center2 = [4.833053, -74.710986];
+			var imageUrl2 = 'pic12.png',
+			imageBounds2 = [center2, [4.502221, -74.228805]];
+
+			L.imageOverlay(imageUrl2, imageBounds2).addTo(maCarte2);
+			
+	
+		</script>
+		
+		<div class="gfg">
+        <img src="pic14.png" class="center">
+		</div>
+		
+		<div class="gfg">
+        <img src="pic13.png">
+		</div>
+		
+		<div class="gfg">
+        <img src="pic19.png">
+		</div>
+		
+		<div class="gfg">
+        <img src="pic20.png">
+		</div>
+		
+		<div class="gfg">
+        <img src="pic15.png">
+		</div>
+		
+		<div class="gfg">
+        <img src="pic21.png">
+		</div>
+	</body>
+ </body>
+</html>
